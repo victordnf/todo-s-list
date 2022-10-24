@@ -19,6 +19,12 @@ export class TodoController{
         return this.todoService.findById(id)
     };
 
+    @Get('/nome/:nome')
+    @HttpCode(HttpStatus.OK)
+    findByTarefa(@Param('tarefa') tarefa: string): Promise<Todo[]>{
+        return this.todoService.findByTarefa(tarefa)
+    }
+
     @Post()
     @HttpCode(HttpStatus.CREATED)
     create(@Body() todo: Todo): Promise<Todo>{
